@@ -9,10 +9,10 @@ async fn main() -> Result<()> {
 	dotenvy::dotenv().ok(); // load .env file (with overrides)
 	thin_logger::build(None).init(); // init logging
 
-	let quota = CursorQuota::try_new().unwrap();
-	let res = quota.get_quota().await.unwrap();
+	let quota = CursorQuota::try_new()?;
+	let res = quota.get_quota().await?;
 
-	println!("{}", serde_json::to_string_pretty(&res)?);
+	println!("{res}");
 
 	Ok(())
 }

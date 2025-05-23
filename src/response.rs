@@ -36,6 +36,13 @@ nestruct::flatten!(
 	}
 );
 
+/// Display the response as a JSON string but panics if it cannot be serialized
+impl std::fmt::Display for CursorRes {
+	fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+		write!(f, "{}", serde_json::to_string(self).unwrap())
+	}
+}
+
 #[cfg(test)]
 mod tests {
 	use super::*;
