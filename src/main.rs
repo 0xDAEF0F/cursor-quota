@@ -1,14 +1,18 @@
-#![allow(unused)]
+mod cursor_quota;
+mod response;
 
 use anyhow::Result;
-use env_logger_wrapper::{LevelFilter, new_builder};
+use cursor_quota::CursorQuota;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-	dotenv::dotenv().ok(); // load .env file
-	new_builder(LevelFilter::Trace).init(); // init logging
+	dotenvy::dotenv_override().ok(); // load .env file (with overrides)
+	thin_logger::build(None).init(); // init logging
 
-	println!("Hello, world!");
+	let quota = CursorQuota::try_new().unwrap();
+	let res = quota.get_quota().await.unwrap();
+
+	println!("{}", serde_json::to_string_pretty(&res)?);
 
 	Ok(())
 }

@@ -5,18 +5,15 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.98"
-bon = "3.6.3"
 chrono = "0.4.41"
 colored = "3.0.0"
-derive_more = { version = "2.0.1", features = ["full"] }
-dotenv = "0.15.0"
-env-logger-wrapper = "0.1.1"
-itertools = "0.14.0"
+dotenvy = "0.15.7"
+nestruct = "0.1.0"
 parking_lot = { version = "0.12.3", features = ["nightly"] }
-reqwest = "0.12.15"
-strum = "0.27.1"
-strum_macros = "0.27.1"
+reqwest = { version = "0.12.15", features = ["json"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
 tap = "1.0.1"
+# thin-logger = "0.1.1"
+thin-logger = { path = "/Users/ale/Documents/thin-logger" }
 tokio = { version = "1.45.0", features = ["full"] }
-validator = "0.20.0"
-variantly = "0.4.0"
