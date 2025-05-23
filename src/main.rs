@@ -6,7 +6,7 @@ use cursor_quota::CursorQuota;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-	dotenvy::dotenv_override().ok(); // load .env file (with overrides)
+	dotenvy::dotenv().ok(); // load .env file (with overrides)
 	thin_logger::build(None).init(); // init logging
 
 	let quota = CursorQuota::try_new().unwrap();

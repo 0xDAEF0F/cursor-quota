@@ -218,7 +218,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "773648b94d0e5d620f64f280777445740e61fe701025087ec8b57f45c791888b"
 
 [[package]]
-name = "cursor_reqs"
+name = "cursor_quota"
 version = "0.1.0"
 dependencies = [
  "anyhow",
@@ -1385,7 +1385,9 @@ dependencies = [
 
 [[package]]
 name = "thin-logger"
-version = "0.1.1"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88e125a7122ed1b024b7b1e730bd4e4007993dc66428158368c385b20306944e"
 dependencies = [
  "chrono",
  "colored",
