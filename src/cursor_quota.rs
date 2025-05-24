@@ -30,11 +30,14 @@ impl CursorQuota {
 			.client
 			.get(&self.api_url)
 			.headers(self.headers.clone())
-			.tap_borrow(|req| log::debug!("req: {:#?}", req))
+			.tap_borrow(|req| log::trace!("req: {:#?}", req))
 			.send()
 			.await
 			.context("Failed to send request to Cursor API")?
-			.tap_borrow(|res| log::info!("request status code: {}", res.status()))
+			.tap_borrow(|res| {
+				log::debug!("response: {res:#?}");
+				log::info!("response status code: {}", res.status())
+			})
 			.json::<CursorRes>()
 			.await?;
 		Ok(res)
