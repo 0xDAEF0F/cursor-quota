@@ -1,4 +1,5 @@
 mod cursor_quota;
+mod jwt;
 mod response;
 
 use anyhow::Result;
@@ -6,7 +7,7 @@ use cursor_quota::CursorQuota;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-	dotenvy::dotenv().ok(); // load .env file (with overrides)
+	dotenvy::dotenv().ok(); // load .env file
 	thin_logger::build(None).init(); // init logging
 
 	let quota = CursorQuota::try_new()?;
